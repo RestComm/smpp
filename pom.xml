@@ -1,0 +1,362 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.mobicents</groupId>
+		<artifactId>mobicents-parent</artifactId>
+		<version>2.20-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.mobicents.protocols.smpp</groupId>
+	<artifactId>smpp-impl</artifactId>
+	<packaging>jar</packaging>
+	<version>1.1.2-SNAPSHOT</version>
+
+	<name>smppapi</name>
+	<description>Java Implementation of the Short Message Peer to Peer API. Extension of SMPP API Project</description>
+	<url>http://www.mobicents.org/</url>
+
+	<organization>
+		<name>Mobicents</name>
+		<url>http://mobicents.org</url>
+	</organization>
+
+	<scm>
+		<connection>
+			scm:svn:https://mobicents.googlecode.com/svn/trunk/protocols/smpp/
+		</connection>
+		<developerConnection>
+			scm:svn:https://mobicents.googlecode.com/svn/trunk/protocols/smpp/
+		</developerConnection>
+		<url>
+			http://mobicents.googlecode.com/svn/trunk/protocols/smpp/
+		</url>
+	</scm>
+
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/mobicents/issues/list</url>
+	</issueManagement>
+
+	<mailingLists>
+		<mailingList>
+			<name>mobicents-public</name>
+			<archive>http://groups.google.com/group/mobicents-public/topics</archive>
+		</mailingList>
+	</mailingLists>
+
+	<developers>
+		<developer>
+			<id>orank</id>
+			<name>Oran Kelly</name>
+			<email>https://sourceforge.net/sendmessage.php?touser=211584</email>
+			<url>https://sourceforge.net/users/orank/</url>
+			<timezone>Europe/Dublin</timezone>
+			<roles>
+				<role>admin</role>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>amit.bhayani</id>
+			<name>Amit Bhayani</name>
+			<email>amit.bhayani@gmail.com</email>
+			<organization>JBoss/Red Hat</organization>
+			<organizationUrl>http://www.redhat.com/</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+5.5</timezone>
+		</developer>
+	</developers>
+
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.4.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Specification-Title>SMPP</Specification-Title>
+							<Specification-Version>5.0</Specification-Version>
+							<Specification-Vendor>http://www.smsforum.net/</Specification-Vendor>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<templateDirectory>src/site</templateDirectory>
+					<template>smppapi-site.vm</template>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.1.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<links>
+						<link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
+					</links>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0-beta-9</version>
+				<configuration>
+					<releaseProfiles>release</releaseProfiles>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-4</version>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptors>
+						<descriptor>src/main/assembly/smppapi.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<groupId>org.mobicents.tools</groupId>
+				<inherited>false</inherited>
+				<executions />
+				<configuration>
+					<classpathExcludes>
+						<exclude>xml-apis:xml-apis</exclude>
+						<exclude>jtidy:jtidy</exclude>
+					</classpathExcludes>
+					<resolveTransitiveDependencies>
+						true
+					</resolveTransitiveDependencies>
+					<eclipseProjectName>
+						mobicents-protocols-smpp
+					</eclipseProjectName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<configLocation>${basedir}/src/test/resources/checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.4.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<instrumentation>
+						<excludes>
+							<exclude>com/pbm/**/*Exception.class</exclude>
+						</excludes>
+					</instrumentation>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.8</version>
+			<classifier>jdk15</classifier>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<version>2.0-beta-9</version>
+						<configuration>
+							<autoVersionSubmodules>
+								true
+							</autoVersionSubmodules>
+							<remoteTagging>true</remoteTagging>
+							<tagBase>
+								https://mobicents.googlecode.com/svn/tags/protocols/smpp
+							</tagBase>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>maven-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<version>2.0-beta-9</version>
+						<configuration>
+							<autoVersionSubmodules>
+								true
+                            </autoVersionSubmodules>
+							<remoteTagging>true</remoteTagging>
+							<tagBase>
+								https://mobicents.googlecode.com/svn/tags/protocols/smpp
+                            </tagBase>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<repositories>
+		<repository>
+			<id>maven</id>
+			<name>Maven Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jboss</id>
+			<name>JBoss Repository</name>
+			<url>http://repository.jboss.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jboss-snapshots</id>
+			<name>JBoss Snapshot Repository</name>
+			<url>http://snapshots.jboss.org/maven2</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+</project>
